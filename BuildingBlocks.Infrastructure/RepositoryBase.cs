@@ -1,4 +1,4 @@
-﻿using BuildingBlocks.Domain;
+﻿using BuildingBlocks.Domain.Aggregate;
 using BuildingBlocks.Domain.Persistance;
 
 namespace BuildingBlocks.Infrastructure;

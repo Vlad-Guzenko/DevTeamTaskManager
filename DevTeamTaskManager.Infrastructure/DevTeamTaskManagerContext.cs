@@ -10,12 +10,10 @@ public class DevTeamTaskManagerContext : DbContext
 {
 	private readonly IMediator _mediator;
 
-    public DevTeamTaskManagerContext(DbContextOptions<DevTeamTaskManagerContext> options,  IMediator mediator)
+    public DevTeamTaskManagerContext(DbContextOptions<DevTeamTaskManagerContext> options)
         : base(options)
     {
         Database.Migrate();
-
-        _mediator = mediator;
     }
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)

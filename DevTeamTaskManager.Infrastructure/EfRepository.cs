@@ -1,5 +1,6 @@
-﻿using BuildingBlocks.Domain;
+﻿using BuildingBlocks.Domain.Aggregate;
 using BuildingBlocks.Domain.Persistance;
+
 using BuildingBlocks.Infrastructure;
 
 namespace DevTeamTaskManager.Infrastructure;
