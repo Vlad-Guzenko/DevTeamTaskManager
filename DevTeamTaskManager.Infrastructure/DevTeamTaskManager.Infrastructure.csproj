@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />
     <PackageReference Include="MediatR" Version="12.4.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.20">
       <PrivateAssets>all</PrivateAssets>
@@ -23,6 +24,11 @@
 	<ItemGroup>
 		<ProjectReference Include="..\DevTeamTaskManager.Domain\DevTeamTaskManager.Domain.csproj" />
 		<ProjectReference Include="..\BuildingBlocks.Infrastructure\BuildingBlocks.Infrastructure.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="EntityConfigurations\" />
+	  <Folder Include="Migrations\" />
 	</ItemGroup>
 
 </Project>

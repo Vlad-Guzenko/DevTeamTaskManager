@@ -5,10 +5,13 @@ using BuildingBlocks.Infrastructure;
 
 namespace DevTeamTaskManager.Infrastructure;
 
-public class EfRepository<TAggregate> : RepositoryBase<TAggregate>, IRepository<TAggregate> 
+public class EfRepository<TAggregate> : RepositoryBase<TAggregate>, IRepository<TAggregate>
 	where TAggregate : class, IAggregateRoot
 {
-	public EfRepository(DevTeamTaskManagerContext dbContext) : base()
+	public IUnitOfWork UnitOfWork { get; }
+
+	public EfRepository(DevTeamTaskManagerContext dbContext) : base(dbContext)
 	{
+		UnitOfWork = dbContext;
 	}
 }
