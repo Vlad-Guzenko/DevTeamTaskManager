@@ -1,15 +1,13 @@
 ﻿using System.Reflection;
 using System.Threading.Tasks;
 
-using MediatR;
+using BuildingBlocks.Domain.Persistance;
 
 using Microsoft.EntityFrameworkCore;
 
 namespace DevTeamTaskManager.Infrastructure;
-public class DevTeamTaskManagerContext : DbContext
+public class DevTeamTaskManagerContext : DbContext, IUnitOfWork
 {
-	private readonly IMediator _mediator;
-
     public DevTeamTaskManagerContext(DbContextOptions<DevTeamTaskManagerContext> options)
         : base(options)
     {
