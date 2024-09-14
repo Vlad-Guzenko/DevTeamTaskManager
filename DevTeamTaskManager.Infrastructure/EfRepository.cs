@@ -6,9 +6,9 @@ using BuildingBlocks.Infrastructure;
 namespace DevTeamTaskManager.Infrastructure;
 
 public class EfRepository<TAggregate> : RepositoryBase<TAggregate>, IRepository<TAggregate>
-	where TAggregate : class, IAggregateRoot
+    where TAggregate : class, IAggregateRoot
 {
-	public IUnitOfWork UnitOfWork { get; }
+    public IUnitOfWork UnitOfWork { get; }
 
 	public EfRepository(DevTeamTaskManagerContext dbContext) : base(dbContext)
 	{

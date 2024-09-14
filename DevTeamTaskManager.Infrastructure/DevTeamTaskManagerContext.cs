@@ -1,13 +1,21 @@
 ﻿using System.Reflection;
 using System.Threading.Tasks;
 
-using BuildingBlocks.Domain.Persistance;
-
 using Microsoft.EntityFrameworkCore;
 
+using BuildingBlocks.Domain.Persistance;
+
+using DevTeamTaskManager.Domain.Aggregates.PTaskAggregates.PTaskAggregate;
+using DevTeamTaskManager.Infrastructure.EntityConfigurations.TaskConfiguration;
+
 namespace DevTeamTaskManager.Infrastructure;
+
 public class DevTeamTaskManagerContext : DbContext, IUnitOfWork
 {
+	public DbSet<PTask> Tasks { get; set; }
+
+    private DevTeamTaskManagerContext() {}
+
     public DevTeamTaskManagerContext(DbContextOptions<DevTeamTaskManagerContext> options)
         : base(options)
     {
@@ -17,6 +25,8 @@ public class DevTeamTaskManagerContext : DbContext, IUnitOfWork
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 		modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+		modelBuilder.ApplyConfiguration(new TaskAggregateConfiguration());
 	}
 
 	public async Task CommitAsync()
