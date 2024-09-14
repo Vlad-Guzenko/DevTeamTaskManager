@@ -30,9 +30,8 @@ public class InfrastructureModule : Module
 		builder
 			.Register(c =>
 			{
-				var dbContextOptionsBuilder = new DbContextOptionsBuilder<DevTeamTaskManagerContext>()
-				.UseLazyLoadingProxies()
-				.UseNpgsql(_configuration.GetConnectionString("DefaultConnection"));
+				var dbContextOptionsBuilder = new DbContextOptionsBuilder<DevTeamTaskManagerContext>().UseLazyLoadingProxies();
+				dbContextOptionsBuilder.UseNpgsql(_configuration.GetConnectionString("DefaultConnection"));
 
 				return new DevTeamTaskManagerContext(dbContextOptionsBuilder.Options);
 			})
