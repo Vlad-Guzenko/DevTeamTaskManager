@@ -3,8 +3,9 @@
 using Microsoft.Extensions.Configuration;
 
 using DevTeamTaskManager.Infrastructure.Utils.Autofac;
-using DevTeamTaskManager.Application.Services.TaskService;
+
 using DevTeamTaskManager.Application.Utils.Extentions;
+using DevTeamTaskManager.Application.Services.TaskService;
 
 namespace DevTeamTaskManager.Application.Utils.Autofac;
 

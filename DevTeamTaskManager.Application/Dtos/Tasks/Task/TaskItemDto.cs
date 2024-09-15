@@ -6,9 +6,9 @@ namespace DevTeamTaskManager.Application.Dtos.Tasks.Task;
 
 public class TaskItemDto
 {
-	public string Title { get; private set; }
+	public string Title { get; set; }
 
-	public Guid ReporterId { get; private set; }
+	public Guid ReporterId { get; set; }
 
-	public TaskStatus Status { get; private set; }
+	public TaskStatus Status { get; set; }
 }
