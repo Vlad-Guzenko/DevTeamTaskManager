@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+using AutoMapper;
+
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 
@@ -29,6 +31,11 @@ builder.Services.AddDbContext<DevTeamTaskManagerContext>(options =>
 {
 	options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
 });
+
+var mapper = new Mapper(new MapperConfiguration(cfg =>
+{
+}));
+builder.Services.AddSingleton<IMapper>(mapper);
 
 builder.Services.AddHttpContextAccessor();
 
