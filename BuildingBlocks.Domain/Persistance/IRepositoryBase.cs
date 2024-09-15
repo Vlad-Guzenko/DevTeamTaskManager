@@ -1,7 +1,27 @@
-﻿using BuildingBlocks.Domain.Aggregate;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+
+using BuildingBlocks.Domain.Aggregate;
 
 namespace BuildingBlocks.Domain.Persistance;
 
 public interface IRepositoryBase<TAggregateRoot> where TAggregateRoot : class, IAggregateRoot
 {
+	TAggregateRoot Add(TAggregateRoot aggregate);
+
+	TAggregateRoot Update(TAggregateRoot aggregate);
+
+	void Remove(TAggregateRoot aggregate);
+
+	void Remove<TAggregate>(TAggregate aggregate) where TAggregate : EntityBase;
+
+	Task<TAggregateRoot> GetAsync(Guid id, CancellationToken cancellationToken = default);
+
+	Task<TAggregateRoot> GetAsync(Specification<TAggregateRoot> specification, CancellationToken cancellationToken = default);
+
+	Task<List<TAggregateRoot>> ListAsync(CancellationToken cancellationToken = default);
+
+	Task<bool> AnyAsync(Specification<TAggregateRoot> specification, CancellationToken cancellationToken = default);
 }
