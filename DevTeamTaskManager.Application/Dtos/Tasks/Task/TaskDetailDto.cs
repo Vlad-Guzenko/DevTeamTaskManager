@@ -6,22 +6,22 @@ namespace DevTeamTaskManager.Application.Dtos.Tasks.Task;
 
 public class TaskDetailDto
 {
-	public string Title { get; private set; }
+	public string Title { get; set; }
 
-	public Guid ReporterId { get; private set; }
+	public Guid ReporterId { get; set; }
 
-	public DescriptionDetailDto Description { get; private set; }
+	public TaskDescriptionDetailDto Description { get; set; }
 
-	public TaskStatus Status { get; private set; }
+	public TaskStatus Status { get; set; }
 
-	public TaskPriority Priority { get; private set; }
+	public TaskPriority Priority { get; set; }
 
-	public DateTime CreatedAt { get; private set; }
+	public DateTime CreatedAt { get; set; }
 
-	public DateTime? DueDate { get; private set; }
+	public DateTime? DueDate { get; set; }
 }
 
-public class DescriptionDetailDto
+public class TaskDescriptionDetailDto
 {
 	public string Content { get; set; }
 }

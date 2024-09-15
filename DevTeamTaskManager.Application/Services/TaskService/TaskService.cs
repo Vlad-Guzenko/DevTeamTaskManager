@@ -26,7 +26,7 @@ public class TaskService : ITaskService
 	{
 		var task = PTask.NewDraft(
 			taskCreationDto.Title, taskCreationDto.ReporterId,
-			taskCreationDto.Description.Content,
+			taskCreationDto.Description,
 			taskCreationDto.Status,
 			taskCreationDto.Priority,
 			taskCreationDto.CreatedAt,
@@ -43,7 +43,7 @@ public class TaskService : ITaskService
 		var task = await _taskRepository.GetAsync(taskUpdateDto.Id)
 			?? throw new ApplicationException($"Task with id: {taskUpdateDto.Id} doesn't exist");
 
-		task.Update(taskUpdateDto.Title, taskUpdateDto.Description.Content, 
+		task.Update(taskUpdateDto.Title, taskUpdateDto.Description, 
 			taskUpdateDto.Status, taskUpdateDto.Priority, taskUpdateDto.DueDate);
 
 		await _taskRepository.UnitOfWork.CommitAsync();

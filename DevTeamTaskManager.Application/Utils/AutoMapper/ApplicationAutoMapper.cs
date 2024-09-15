@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 
+using DevTeamTaskManager.Application.Utils.Mapping.TaskProfiles;
+
 namespace DevTeamTaskManager.Application.Utils.AutoMapper;
 
 public class ApplicationAutoMapper : Mapper, IApplicationAutoMapper
@@ -11,7 +13,7 @@ public class ApplicationAutoMapper : Mapper, IApplicationAutoMapper
 	{
 		return new ApplicationAutoMapper(new MapperConfiguration(cfg => 
 		{
-
+			cfg.AddProfile(new TaskProfile());
 		}));
 	}
 }
