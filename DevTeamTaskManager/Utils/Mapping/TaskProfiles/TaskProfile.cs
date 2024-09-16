@@ -11,7 +11,7 @@ public class TaskProfile : Profile
     public TaskProfile()
     {
         CreateMap<TaskCreationViewModel, TaskCreationDto>();
-        CreateMap<TaskUpdateViewModel, TaskDescriptionDetailDto>();
+        CreateMap<TaskUpdateViewModel, TaskUpdateDto>();
         CreateMap<TaskItemDto, TaskItemViewModel>();
 
         CreateMap<TaskDetailDto, TaskDetailViewModel>();

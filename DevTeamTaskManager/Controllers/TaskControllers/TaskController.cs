@@ -37,11 +37,11 @@ public class TaskController : ControllerBase
 	[HttpPut]
 	[ProducesResponseType(StatusCodes.Status200OK)]
 	[ProducesResponseType(StatusCodes.Status400BadRequest)]
-	public async Task<IActionResult> Update(TaskUpdateViewModel schoolUpdateViewModel)
+	public async Task<IActionResult> Update(TaskUpdateViewModel taskUpdateViewModel)
 	{
-		var schoolUpdateDto = _mapper.Map<TaskUpdateDto>(schoolUpdateViewModel);
+		var taskUpdateDto = _mapper.Map<TaskUpdateDto>(taskUpdateViewModel);
 
-		await _taskService.Update(schoolUpdateDto);
+		await _taskService.Update(taskUpdateDto);
 
 		return Ok();
 	}
