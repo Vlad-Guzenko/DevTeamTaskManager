@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using BuildingBlocks.Domain.Aggregate;
 using BuildingBlocks.Domain.Persistance;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BuildingBlocks.Infrastructure;
 
@@ -56,6 +57,16 @@ public abstract class RepositoryBase<TAggregateRoot> : IRepositoryBase<TAggregat
 	public async Task<List<TAggregateRoot>> ListAsync(CancellationToken cancellationToken = default)
 	{
 		return await DbContext.Set<TAggregateRoot>().ToListAsync(cancellationToken);
+	}
+
+	public async Task<List<TAggregateRoot>> ListAsync(Specification<TAggregateRoot> specification, CancellationToken cancellationToken = default)
+	{
+		return await SpecificationEvaluator<TAggregateRoot>.GetQuery(DbContext.Set<TAggregateRoot>(), specification).ToListAsync();
+	}
+
+	public async Task<List<TAggregate>> ListAsync<TAggregate>(Specification<TAggregateRoot> specification, CancellationToken cancellationToken = default) where TAggregate : class, TAggregateRoot
+	{
+		return await SpecificationEvaluator<TAggregateRoot>.GetQuery(DbContext.Set<TAggregateRoot>(), specification).Cast<TAggregate>().ToListAsync(cancellationToken);
 	}
 
 	public async Task<bool> AnyAsync(Specification<TAggregateRoot> specification, CancellationToken cancellationToken = default)

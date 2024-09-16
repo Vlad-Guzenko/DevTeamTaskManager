@@ -23,5 +23,9 @@ public interface IRepositoryBase<TAggregateRoot> where TAggregateRoot : class, I
 
 	Task<List<TAggregateRoot>> ListAsync(CancellationToken cancellationToken = default);
 
+	Task<List<TAggregateRoot>> ListAsync(Specification<TAggregateRoot> specification, CancellationToken cancellationToken = default);
+
+	Task<List<TAggregate>> ListAsync<TAggregate>(Specification<TAggregateRoot> specification, CancellationToken cancellationToken = default) where TAggregate : class, TAggregateRoot;
+
 	Task<bool> AnyAsync(Specification<TAggregateRoot> specification, CancellationToken cancellationToken = default);
 }

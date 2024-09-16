@@ -38,7 +38,7 @@ public class TaskComment : EntityBase, IAggregateRoot
 		return new TaskComment(taskId, content, authorId);
 	}
 
-	public void UpdateComment(string content)
+	public void Update(string content)
 	{
 		CheckInvariants(new ShouldHaveContent(content));
 
