@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+using AutoMapper;
+
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 
@@ -8,9 +10,12 @@ using Microsoft.EntityFrameworkCore;
 
 using DevTeamTaskManager.API.Configuration;
 using DevTeamTaskManager.API.Utils.Extentions;
+using DevTeamTaskManager.API.Utils.Mapping.TaskProfiles;
 
 using DevTeamTaskManager.Infrastructure;
 using DevTeamTaskManager.Infrastructure.Utils.Autofac;
+
+using DevTeamTaskManager.Application.Utils.Autofac;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +24,11 @@ var configuration = GetConfiguration(builder.Environment.EnvironmentName);
 var apiConfiguration = configuration.GetSection(nameof(ApiConfiguration)).Get<ApiConfiguration>();
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
+{
+	builder.RegisterModule(new ApplicationModule(configuration));
+});
 
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 {
@@ -29,6 +39,13 @@ builder.Services.AddDbContext<DevTeamTaskManagerContext>(options =>
 {
 	options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
 });
+
+var mapper = new Mapper(new MapperConfiguration(cfg =>
+{
+	cfg.AddProfile(new TaskProfile());
+}));
+
+builder.Services.AddSingleton<IMapper>(mapper);
 
 builder.Services.AddHttpContextAccessor();
 

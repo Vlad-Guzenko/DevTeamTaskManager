@@ -45,4 +45,18 @@ public class PTask : EntityBase, IAggregateRoot
     {
         return new PTask(title, reporterId, description, taskStatus, taskPriority, createdAt, dueDate);
     }
+
+    public void Update(string title, string description, TaskStatus taskStatus,
+		TaskPriority taskPriority, DateTime? dueDate)
+    {
+        CheckInvariants(new TitleCannotBeEmptyInvariant(title),
+			new TaskShouldHaveStatusInvariant(taskStatus),
+			new TaskShouldHavePriorityInvariant(taskPriority));
+
+		Title = title;
+		Description = new Description(description);
+		Status = taskStatus;
+		Priority = taskPriority;
+		DueDate = dueDate;
+	}
 }
