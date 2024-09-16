@@ -3,9 +3,8 @@
 using Microsoft.AspNetCore.Mvc;
 
 using DevTeamTaskManager.API.ViewModels.Tasks.Task;
-
-using DevTeamTaskManager.Application.Services.TaskService;
 using DevTeamTaskManager.Application.Dtos.Tasks.Task;
+using DevTeamTaskManager.Application.Services.TaskServices.TaskService;
 
 namespace DevTeamTaskManager.API.Controllers.TaskControllers;
 

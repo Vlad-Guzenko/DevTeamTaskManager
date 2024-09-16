@@ -5,7 +5,8 @@ using Microsoft.Extensions.Configuration;
 using DevTeamTaskManager.Infrastructure.Utils.Autofac;
 
 using DevTeamTaskManager.Application.Utils.Extentions;
-using DevTeamTaskManager.Application.Services.TaskService;
+using DevTeamTaskManager.Application.Services.TaskServices.TaskService;
+using DevTeamTaskManager.Application.Services.TaskServices.TaskCommentService;
 
 namespace DevTeamTaskManager.Application.Utils.Autofac;
 
@@ -25,5 +26,6 @@ public class ApplicationModule : Module
 		builder.RegisterModule(new InfrastructureModule(_configuration));
 
 		builder.RegisterType<TaskService>().As<ITaskService>().InstancePerLifetimeScope();
+		builder.RegisterType<TaskCommentService>().As<ITaskCommentService>().InstancePerLifetimeScope();
 	}
 }

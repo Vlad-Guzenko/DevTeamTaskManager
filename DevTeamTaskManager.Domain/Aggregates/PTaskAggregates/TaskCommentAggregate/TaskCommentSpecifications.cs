@@ -6,7 +6,7 @@ namespace DevTeamTaskManager.Domain.Aggregates.PTaskAggregates.TaskCommentAggreg
 
 public class TaskCommentSpecifications
 {
-	public static Specification<TaskComment> ChildDocuments(Guid taskId)
+	public static Specification<TaskComment> TaskComments(Guid taskId)
 	{
 		return new Specification<TaskComment>(taskComment => taskComment.TaskId == taskId);
 	}
