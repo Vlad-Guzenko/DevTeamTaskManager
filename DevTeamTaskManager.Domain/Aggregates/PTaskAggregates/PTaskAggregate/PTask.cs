@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using BuildingBlocks.Domain.Aggregate;
 
 using DevTeamTaskManager.Domain.Aggregates.PTaskAggregates.PTaskAggregate.Invariants;
+using DevTeamTaskManager.Domain.Aggregates.PTaskAggregates.TaskCommentAggregate;
 
 namespace DevTeamTaskManager.Domain.Aggregates.PTaskAggregates.PTaskAggregate;
 
@@ -22,7 +24,10 @@ public class PTask : EntityBase, IAggregateRoot
 
     public DateTime? DueDate { get; private set; }
 
-    protected internal PTask() { }
+
+	public virtual ICollection<TaskComment> TaskComments { get; private set; }
+
+	protected internal PTask() { }
 
     private PTask(string title, Guid reporterId, string description, TaskStatus taskStatus,
         TaskPriority taskPriority, DateTime createdAt, DateTime? dueDate)

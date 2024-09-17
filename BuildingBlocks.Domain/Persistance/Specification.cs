@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Collections.Generic;
 
 using BuildingBlocks.Domain.Aggregate;
 
@@ -17,7 +17,7 @@ public sealed class Specification<TAggregate> : ISpecification<TAggregate>
 
 	public Expression<Func<TAggregate, object>> OrderByDescendingExpression { get; private set; }
 
-	public List<Expression<Func<TAggregate, object>>> IncludesExpression { get; }
+	public List<Expression<Func<TAggregate, object>>> IncludesExpression { get; } = new List<Expression<Func<TAggregate, object>>>();
 
 	public Specification(Expression<Func<TAggregate, bool>> expression)
 	{
@@ -29,6 +29,35 @@ public sealed class Specification<TAggregate> : ISpecification<TAggregate>
 	{
 		return Expression.Compile().Invoke(aggregate);
 	}
+
+	public Specification<TAggregate> AddInclude(Expression<Func<TAggregate, object>> includeExpression)
+	{
+		IncludesExpression.Add(includeExpression);
+
+		return this;
+	}
+
+	public Specification<TAggregate> AddOrderBy(Expression<Func<TAggregate, object>> orderByExpression)
+	{
+		OrderByExpression = orderByExpression;
+
+		return this;
+	}
+
+	public Specification<TAggregate> AddThenBy(Expression<Func<TAggregate, object>> thenByExpression)
+	{
+		ThenByExpression = thenByExpression;
+
+		return this;
+	}
+
+	public Specification<TAggregate> AddOrderByDescending(Expression<Func<TAggregate, object>> orderByDescendingExpression)
+	{
+		OrderByDescendingExpression = orderByDescendingExpression;
+
+		return this;
+	}
+
 
 	public static implicit operator Expression<Func<TAggregate, bool>>(Specification<TAggregate> spec)
 		=> spec.Expression;
@@ -51,4 +80,7 @@ public sealed class Specification<TAggregate> : ISpecification<TAggregate>
 
 	public static Specification<TAggregate> operator !(Specification<TAggregate> spec)
 		=> new Specification<TAggregate>(spec.Expression.Not());
+
+	//public IQueryable<T> Apply(IQueryable<T> query)
+	//        => query.Where(Expression);
 }
