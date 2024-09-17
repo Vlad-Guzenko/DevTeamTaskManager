@@ -12,7 +12,7 @@ public interface ITaskCommentService
 
 	Task Update(Guid taskCommentId, TaskCommentUpdateDto taskCommentUpdateDto);
 
-	Task<List<TaskCommentItemDto>> List(Guid taskId);
+	//Task<List<TaskCommentItemDto>> List(Guid taskId);
 
 	Task Delete(Guid taskCommentId);
 }

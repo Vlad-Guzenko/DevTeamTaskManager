@@ -16,5 +16,6 @@ public class TaskProfile : Profile
 
         CreateMap<TaskDetailDto, TaskDetailViewModel>();
         CreateMap<TaskDescriptionDetailDto, TaskDescriptionDetailViewModel>();
+        CreateMap<TaskCommentDetailDto, TaskCommentDetailViewModel>();
     }
 }

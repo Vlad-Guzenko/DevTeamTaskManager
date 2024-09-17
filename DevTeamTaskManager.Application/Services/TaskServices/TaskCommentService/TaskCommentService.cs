@@ -28,7 +28,7 @@ public class TaskCommentService : ITaskCommentService
 
 	public async Task<TaskCommentItemDto> Create(TaskCommentCreationDto taskCommentCreationDto)
 	{
-		if (! await _taskRepository.AnyAsync(PTaskSepcifications.IsExist(taskCommentCreationDto.TaskId)))
+		if (!await _taskRepository.AnyAsync(PTaskSepcifications.IsExist(taskCommentCreationDto.TaskId)))
 		{
 			throw new ApplicationException($"Task with id: {taskCommentCreationDto.TaskId} doesn't exist");
 		}
@@ -51,12 +51,12 @@ public class TaskCommentService : ITaskCommentService
 		await _taskCommentRepository.UnitOfWork.CommitAsync();
 	}
 	
-	public async Task<List<TaskCommentItemDto>> List(Guid taskId)
-	{
-		var taskComments = await _taskCommentRepository.ListAsync(TaskCommentSpecifications.TaskComments(taskId));
+	//public async Task<List<TaskCommentItemDto>> List(Guid taskId)
+	//{
+	//	var taskComments = await _taskCommentRepository.ListAsync(TaskCommentSpecifications.TaskComments(taskId));
 
-		return _mapper.Map<List<TaskCommentItemDto>>(taskComments);
-	}
+	//	return _mapper.Map<List<TaskCommentItemDto>>(taskComments);
+	//}
 
 	public async Task Delete(Guid taskCommentId)
 	{
