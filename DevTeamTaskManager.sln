@@ -10,18 +10,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevTeamTaskManager.API", "D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DevTeamTaskManager", "DevTeamTaskManager", "{C628BDED-900C-4E28-8334-BBB6DC8F633A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevTeamTaskManager.Infrastructure", "DevTeamTaskManager.Infrastructure\DevTeamTaskManager.Infrastructure.csproj", "{784BE1D8-BF97-4E13-B38A-D3F82A9FCD5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevTeamTaskManager.Infrastructure", "DevTeamTaskManager.Infrastructure\DevTeamTaskManager.Infrastructure.csproj", "{784BE1D8-BF97-4E13-B38A-D3F82A9FCD5E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{1065DAF3-CEC3-4B2D-9673-969169C0789D} = {1065DAF3-CEC3-4B2D-9673-969169C0789D}
 		{9804AB3B-8E6A-4BA8-B788-3513D6C7FADD} = {9804AB3B-8E6A-4BA8-B788-3513D6C7FADD}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevTeamTaskManager.Domain", "DevTeamTaskManager.Domain\DevTeamTaskManager.Domain.csproj", "{1065DAF3-CEC3-4B2D-9673-969169C0789D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevTeamTaskManager.Domain", "DevTeamTaskManager.Domain\DevTeamTaskManager.Domain.csproj", "{1065DAF3-CEC3-4B2D-9673-969169C0789D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{42AD0C4C-8F3A-45B4-AFC9-737437A604E1} = {42AD0C4C-8F3A-45B4-AFC9-737437A604E1}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevTeamTaskManager.Application", "DevTeamTaskManager.Application\DevTeamTaskManager.Application.csproj", "{E33B5313-0498-48E1-A4B6-39264C03427C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevTeamTaskManager.Application", "DevTeamTaskManager.Application\DevTeamTaskManager.Application.csproj", "{E33B5313-0498-48E1-A4B6-39264C03427C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{1065DAF3-CEC3-4B2D-9673-969169C0789D} = {1065DAF3-CEC3-4B2D-9673-969169C0789D}
 		{784BE1D8-BF97-4E13-B38A-D3F82A9FCD5E} = {784BE1D8-BF97-4E13-B38A-D3F82A9FCD5E}
@@ -30,17 +30,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevTeamTaskManager.Applicat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{FC0520C5-09F9-4E5B-85A7-07FF968C402A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Application", "BuildingBlocks.Application\BuildingBlocks.Application.csproj", "{E97C9B57-2C5C-44E5-877B-D27136B9D277}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingBlocks.Application", "BuildingBlocks.Application\BuildingBlocks.Application.csproj", "{E97C9B57-2C5C-44E5-877B-D27136B9D277}"
 	ProjectSection(ProjectDependencies) = postProject
 		{42AD0C4C-8F3A-45B4-AFC9-737437A604E1} = {42AD0C4C-8F3A-45B4-AFC9-737437A604E1}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Infrastructure", "BuildingBlocks.Infrastructure\BuildingBlocks.Infrastructure.csproj", "{9804AB3B-8E6A-4BA8-B788-3513D6C7FADD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingBlocks.Infrastructure", "BuildingBlocks.Infrastructure\BuildingBlocks.Infrastructure.csproj", "{9804AB3B-8E6A-4BA8-B788-3513D6C7FADD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{42AD0C4C-8F3A-45B4-AFC9-737437A604E1} = {42AD0C4C-8F3A-45B4-AFC9-737437A604E1}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Domain", "BuildingBlocks.Domain\BuildingBlocks.Domain.csproj", "{42AD0C4C-8F3A-45B4-AFC9-737437A604E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingBlocks.Domain", "BuildingBlocks.Domain\BuildingBlocks.Domain.csproj", "{42AD0C4C-8F3A-45B4-AFC9-737437A604E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{74F6B10A-8EA3-4499-868E-A03DBA91A67A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevTeamTaskManager.UnitTests", "DevTeamTaskManager.UnitTests\DevTeamTaskManager.UnitTests.csproj", "{F7139F5E-13C8-4C34-BDA1-353B86E04E67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,6 +80,10 @@ Global
 		{42AD0C4C-8F3A-45B4-AFC9-737437A604E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42AD0C4C-8F3A-45B4-AFC9-737437A604E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42AD0C4C-8F3A-45B4-AFC9-737437A604E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7139F5E-13C8-4C34-BDA1-353B86E04E67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7139F5E-13C8-4C34-BDA1-353B86E04E67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7139F5E-13C8-4C34-BDA1-353B86E04E67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7139F5E-13C8-4C34-BDA1-353B86E04E67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +95,8 @@ Global
 		{E97C9B57-2C5C-44E5-877B-D27136B9D277} = {FC0520C5-09F9-4E5B-85A7-07FF968C402A}
 		{9804AB3B-8E6A-4BA8-B788-3513D6C7FADD} = {FC0520C5-09F9-4E5B-85A7-07FF968C402A}
 		{42AD0C4C-8F3A-45B4-AFC9-737437A604E1} = {FC0520C5-09F9-4E5B-85A7-07FF968C402A}
+		{74F6B10A-8EA3-4499-868E-A03DBA91A67A} = {C628BDED-900C-4E28-8334-BBB6DC8F633A}
+		{F7139F5E-13C8-4C34-BDA1-353B86E04E67} = {74F6B10A-8EA3-4499-868E-A03DBA91A67A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {489F2346-69F7-49EE-A9A9-BE654F0CFC2C}
