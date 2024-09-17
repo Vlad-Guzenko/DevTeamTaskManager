@@ -43,6 +43,7 @@ builder.Services.AddDbContext<DevTeamTaskManagerContext>(options =>
 var mapper = new Mapper(new MapperConfiguration(cfg =>
 {
 	cfg.AddProfile(new TaskProfile());
+	cfg.AddProfile(new TaskCommentProfile());
 }));
 
 builder.Services.AddSingleton<IMapper>(mapper);

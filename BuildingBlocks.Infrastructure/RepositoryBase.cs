@@ -49,9 +49,24 @@ public abstract class RepositoryBase<TAggregateRoot> : IRepositoryBase<TAggregat
 		return await DbContext.Set<TAggregateRoot>().FindAsync(id, cancellationToken);
 	}
 
+	public async Task<TAggregate> GetAsync<TAggregate>(Guid id, CancellationToken cancellationToken = default) where TAggregate : class, TAggregateRoot
+	{
+		return (await DbContext.Set<TAggregateRoot>().FindAsync(id, cancellationToken)) as TAggregate;
+	}
+
+	public async Task<TAggregateRoot> GetAsync(ISpecification<TAggregateRoot> specification, CancellationToken cancellationToken = default)
+	{
+		return await DbContext.Set<TAggregateRoot>().FirstOrDefaultAsync(specification.Expression, cancellationToken);
+	}
+
 	public async Task<TAggregateRoot> GetAsync(Specification<TAggregateRoot> specification, CancellationToken cancellationToken = default)
 	{
 		return await SpecificationEvaluator<TAggregateRoot>.GetQuery(DbContext.Set<TAggregateRoot>(), specification).FirstOrDefaultAsync(specification, cancellationToken);
+	}
+
+	public async Task<TAggregate> GetAsync<TAggregate>(Specification<TAggregateRoot> specification, CancellationToken cancellationToken = default) where TAggregate : class, TAggregateRoot
+	{
+		return await SpecificationEvaluator<TAggregateRoot>.GetQuery(DbContext.Set<TAggregateRoot>(), specification).FirstOrDefaultAsync(specification, cancellationToken) as TAggregate;
 	}
 
 	public async Task<List<TAggregateRoot>> ListAsync(CancellationToken cancellationToken = default)
@@ -72,5 +87,10 @@ public abstract class RepositoryBase<TAggregateRoot> : IRepositoryBase<TAggregat
 	public async Task<bool> AnyAsync(Specification<TAggregateRoot> specification, CancellationToken cancellationToken = default)
 	{
 		return await SpecificationEvaluator<TAggregateRoot>.GetQuery(DbContext.Set<TAggregateRoot>(), specification).AnyAsync(specification, cancellationToken);
+	}
+
+	public async Task<bool> AnyAsync<TAggregate>(Specification<TAggregate> specification, CancellationToken cancellationToken = default) where TAggregate : class, TAggregateRoot
+	{
+		return await SpecificationEvaluator<TAggregate>.GetQuery(DbContext.Set<TAggregate>(), specification).AnyAsync(specification, cancellationToken);
 	}
 }

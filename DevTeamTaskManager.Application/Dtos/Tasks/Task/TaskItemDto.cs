@@ -6,6 +6,8 @@ namespace DevTeamTaskManager.Application.Dtos.Tasks.Task;
 
 public class TaskItemDto
 {
+	public Guid Id { get; set; }
+
 	public string Title { get; set; }
 
 	public Guid ReporterId { get; set; }

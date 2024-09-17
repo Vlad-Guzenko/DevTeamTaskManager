@@ -6,8 +6,8 @@ namespace DevTeamTaskManager.Domain.Aggregates.PTaskAggregates.PTaskAggregate;
 
 public class PTaskSepcifications
 {
-	public static Specification<PTask> IsExist(Guid id)
+	public static Specification<PTask> IsExist(Guid taskId)
 	{
-		return new Specification<PTask>(task => task.Id == id);
+		return new Specification<PTask>(task => task.Id == taskId);
 	}
 }
